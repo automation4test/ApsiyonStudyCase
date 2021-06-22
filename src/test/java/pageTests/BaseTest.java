@@ -20,6 +20,7 @@ public class BaseTest {
     public HomePageObject homePageObject;
     public SearchProductPageObject searchProductPageObject;
     public ProductDetailPageObject productDetailPageObject;
+
     Properties properties;
     FileInputStream fileInputStream;
 

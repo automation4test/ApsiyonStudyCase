@@ -18,12 +18,13 @@ public class LoginPageObject extends BasePage {
 
     public LoginPageObject checkLoginPageIsOpen() {
         Assert.assertTrue(isElementPresent(login_page_Label), "Login page did not display.");
+        getInfoMessage("Login sayfası açıldı.");
         return this;
     }
 
     public LoginPageObject loginWithUserCredential(String uName, String pass) {
         clearTextField(email_textbox);
-        fillInputTextBox(email_textbox,uName);
+        fillInputTextBox(email_textbox, uName);
         click(continue_btn);
         clearTextField(password_textbox);
         fillInputTextBox(password_textbox, pass);
@@ -33,7 +34,7 @@ public class LoginPageObject extends BasePage {
 
     public LoginPageObject checkTheUserIsLogin() {
         Assert.assertTrue(!getElementText(userName_label).equals("Merhaba, Giriş yapın"), "The user is not login");
+        getInfoMessage("Başarılı giriş yapıldı.");
         return this;
     }
-
 }

@@ -3,6 +3,7 @@
 <suite name="Amazon Test Suite">
     <listeners>
         <listener class-name="utils.listeners.TestListener"/>
+        <listener class-name="utils.listeners.AnnotationTransformer"/>
     </listeners>
     <test name="ProductTest">
         <classes>

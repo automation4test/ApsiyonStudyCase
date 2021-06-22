@@ -1,7 +1,6 @@
 package pageObjects;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
@@ -9,8 +8,6 @@ public class SearchProductPageObject extends BasePage {
     public SearchProductPageObject(WebDriver driver) {
         super(driver);
     }
-
-    int product_count;
 
     By search_prodcut_textbox = By.xpath("//input[@id='twotabsearchtextbox']");
     By search_product_btn = By.xpath("//input[@id='nav-search-submit-button']");
@@ -25,18 +22,21 @@ public class SearchProductPageObject extends BasePage {
 
     public SearchProductPageObject checkSearchProductResult() {
         Assert.assertTrue(findElements(product_list_items).size() != 0, "Search result not found any element");
+        getInfoMessage("Arama sonuçları bulundu.");
         return this;
     }
 
     public SearchProductPageObject clickSecondPageButtonAndAssertPaginationNumber(String page) {
         click(next_page_btn);
-        Assert.assertTrue(getDriverURL().contains("page=" + page));
+        Assert.assertTrue(getDriverURL().contains("page=" + page), page + ". page is not open");
+        getInfoMessage(page + ". sayfa açıldı.");
         return this;
     }
 
-    public ProductDetailPageObject openProductDetail(int productOrder){
+    public ProductDetailPageObject openProductDetail(int productOrder) {
         waitVisibility(product_list_items);
-        findElements(product_list_items).get((productOrder-1)).click();
+        findElements(product_list_items).get((productOrder - 1)).click();
+        getInfoMessage("Ürün detayı açıldı.");
         return new ProductDetailPageObject(driver);
     }
 }

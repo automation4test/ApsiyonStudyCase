@@ -24,14 +24,11 @@ public class TestListener extends BaseTest implements ITestListener {
 
     @Override
     public void onStart(ITestContext iTestContext) {
-        Log.info("I am in onStart method " + iTestContext.getName());
         iTestContext.setAttribute("WebDriver", this.driver);
     }
 
     @Override
     public void onFinish(ITestContext iTestContext) {
-        Log.info("I am in onFinish method " + iTestContext.getName());
-        //Do tier down operations for ExtentReports reporting!
         getExtentReports().flush();
     }
 
@@ -43,7 +40,6 @@ public class TestListener extends BaseTest implements ITestListener {
     @Override
     public void onTestSuccess(ITestResult iTestResult) {
         Log.info(getTestMethodName(iTestResult) + " test is succeed.");
-        //ExtentReports log operation for passed tests.
         getTest().log(Status.PASS, "Test passed");
     }
 

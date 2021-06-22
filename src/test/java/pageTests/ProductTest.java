@@ -6,15 +6,15 @@ import java.lang.reflect.Method;
 
 import static utils.extentReport.ExtentTestManager.startTest;
 
-public class ProductTest extends BaseTest{
+public class ProductTest extends BaseTest {
 
     @Test(priority = 0, description = "open amazon.com.tr add product to favorite check and remove it.")
-    public void searchProduct_addFavourite_removeFavourite_Test(Method method){
-        startTest(method.getName(),"searchProduct_addFavourite_removeFavourite_Test");
+    public void searchProduct_addFavourite_removeFavourite_Test(Method method) {
+        startTest(method.getName(), "searchProduct_addFavourite_removeFavourite_Test");
 
         homePageObject
                 .openHomePage(properties.getProperty("baseURL"))
-                .checkHomePageIsOpen()
+                .checkHomePageIsOpen(properties.getProperty("baseURL"))
                 .openLoginPage()
                 .checkLoginPageIsOpen()
                 .loginWithUserCredential(properties.getProperty("username"), properties.getProperty("password"))
